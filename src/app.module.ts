@@ -26,15 +26,14 @@ import { UnderGovernorateModule } from './under-governorate/under-governorate.mo
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'project3',
-      entities: [],
-      autoLoadEntities: true,
-      synchronize: true,
+ type: 'mysql',
+  host: process.env.DB_HOST,
+  port:26943,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  autoLoadEntities: true,
+  synchronize: true,
     }),
     PStatusModule,
     CompanyModule,
