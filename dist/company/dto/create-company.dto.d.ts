@@ -1,0 +1,22 @@
+import { ROLE } from './../../auth/enums/role.enum';
+export declare class CompanyDto {
+    firstName?: string;
+    creatingDate?: Date;
+    lastName?: string;
+    email?: string;
+    secondPhone?: number;
+    photo?: string;
+    phone?: string;
+    instaLink?: string;
+    facebookLink?: string;
+    linkedinLink?: string;
+    websiteLink?: string;
+    description?: string;
+    location?: string;
+    typeOfCompanyId?: number;
+    undergovernorateId?: number;
+    governoratedId?: number;
+    isActive?: boolean;
+    password?: string;
+    role: ROLE.COMPANY;
+}
