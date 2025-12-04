@@ -1,0 +1,11 @@
+[build]
+builder = "NIXPACKS"
+
+[phases.setup]
+cmds = ["npm install"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "node dist/main.js"
