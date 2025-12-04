@@ -27,11 +27,8 @@ import { UnderGovernorateModule } from './under-governorate/under-governorate.mo
   imports: [
     TypeOrmModule.forRoot({
  type: 'mysql',
-      host: 'your-railway-private-domain', // replace with MYSQLHOST
-      port: 3306, // replace with MYSQLPORT
-      username: 'root', // MYSQLUSER
-      password: 'yCcXCuIguQstUJuVXfTysQacslrVnWhu', // MYSQL_ROOT_PASSWORD
-      database: 'railway', // MYSQL_DATABASE
+  url: 'mysql://root:yCcXCuIguQstUJuVXfTysQacslrVnWhu@db-xxxx.railway.internal:3306/railway',
+
       autoLoadEntities: true,
       synchronize: true,
     }),
