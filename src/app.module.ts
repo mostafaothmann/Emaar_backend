@@ -27,13 +27,13 @@ import { UnderGovernorateModule } from './under-governorate/under-governorate.mo
   imports: [
     TypeOrmModule.forRoot({
  type: 'mysql',
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  autoLoadEntities: true,
-  synchronize: true,
+      host: 'your-railway-private-domain', // replace with MYSQLHOST
+      port: 3306, // replace with MYSQLPORT
+      username: 'root', // MYSQLUSER
+      password: 'yCcXCuIguQstUJuVXfTysQacslrVnWhu', // MYSQL_ROOT_PASSWORD
+      database: 'railway', // MYSQL_DATABASE
+      autoLoadEntities: true,
+      synchronize: true,
     }),
     PStatusModule,
     CompanyModule,
