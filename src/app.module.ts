@@ -28,7 +28,7 @@ import { UnderGovernorateModule } from './under-governorate/under-governorate.mo
     TypeOrmModule.forRoot({
  type: 'mysql',
   host: process.env.DB_HOST,
-  port:26943,
+  port: Number(process.env.DB_PORT),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
