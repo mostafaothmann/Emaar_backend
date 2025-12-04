@@ -24,15 +24,12 @@ import { CustomerPropertyOfferModule } from './customer-property-offer/customer-
 import { GovernorateModule } from './governorate/governorate.module';
 import { UnderGovernorateModule } from './under-governorate/under-governorate.module';
 require("dotenv").config();
+const DBurl=`mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQL_DATABASE}`
 @Module({
   imports: [
     TypeOrmModule.forRoot({
  type: 'mysql',
-  host: process.env.DB_HOST,
-  port: Number(process.env.DB_PORT),
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  url:DBurl,
   autoLoadEntities: true,
   synchronize: true,
     }),
