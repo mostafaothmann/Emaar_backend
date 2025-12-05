@@ -29,7 +29,7 @@ const DBurl=`mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}
   imports: [
     TypeOrmModule.forRoot({
  type: 'mysql',
-  url: process.env.MYSQL_PUBLIC_UR,
+  url: 'mysql://root:yCcXCuIguQstUJuVXfTysQacslrVnWhu@mysql.railway.internal:3306/railway',
   autoLoadEntities: true,
   synchronize: true,
     }),
