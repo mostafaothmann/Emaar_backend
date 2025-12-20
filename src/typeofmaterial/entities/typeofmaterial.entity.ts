@@ -8,7 +8,7 @@ export class TypeOfMaterial {
 
   @Column({ type: 'varchar', length: 255, unique: true, nullable: true })
   name: string;
-  @Column({ type: 'varchar', length: 255, unique: true, nullable: true })
+  @Column({ type: 'varchar', length: 255, unique: false, nullable: true })
   description: string;
   // 👇 One customer has many properties
   @OneToMany(() => Material, material => material.typeOfMaterial)
