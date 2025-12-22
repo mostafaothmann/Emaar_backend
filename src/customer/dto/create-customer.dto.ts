@@ -5,7 +5,7 @@ export class CustomerDto {
   age?: number;
   lastName?: string;
   email?: string;
-  isActive?:boolean;
+  isActive?:number;
   secondPhone?: number;
   photo?: string;
   phone?: string;

@@ -6,7 +6,7 @@ export class UpdateCustomerDto {
   lastName?: string;
   email?: string;
   secondPhone?: number;
-  isActive?: boolean;
+  isActive?: number;
   photo?: string;
   phone?: string;
   instaLink?: string;
