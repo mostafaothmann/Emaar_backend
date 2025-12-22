@@ -6,6 +6,7 @@ export class UpdateCustomerDto {
   lastName?: string;
   email?: string;
   secondPhone?: number;
+  isActive?: boolean;
   photo?: string;
   phone?: string;
   instaLink?: string;
@@ -14,5 +15,5 @@ export class UpdateCustomerDto {
   websiteLink?: string;
   description?: string;
   location?: string;
-  role:ROLE.CUSTOMER
+  role: ROLE.CUSTOMER
 }

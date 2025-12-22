@@ -7,9 +7,12 @@ import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, OneToMany } from 't
 export class Customer {
   @PrimaryGeneratedColumn()
   id: number;
-   
+
   @Column({ type: 'varchar', length: 255, nullable: true })
   firstName: string;
+
+  @Column({ type: 'smallint', nullable: true })
+  isActive: number;
 
   @Column({ type: 'int', nullable: true })
   age: number;
@@ -30,11 +33,11 @@ export class Customer {
   photo: string;
 
   @Column({
-    type:"enum",
-    enum:ROLE,
-    default:ROLE.CUSTOMER
+    type: "enum",
+    enum: ROLE,
+    default: ROLE.CUSTOMER
   })
-  role:ROLE;
+  role: ROLE;
 
   @Column({ type: 'varchar', length: 255, nullable: true, unique: true })
   phone: string;
@@ -60,7 +63,7 @@ export class Customer {
   // 👇 One customer has many properties
   @OneToMany(() => Property, property => property.customer)
   properties: Property[];
-   // 👇 One customer has many offers
+  // 👇 One customer has many offers
   @OneToMany(() => CustomerPropertyOffer, customerPropertyOffer => customerPropertyOffer.customer)
   offers: CustomerPropertyOffer[];
 }
