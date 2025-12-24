@@ -1,6 +1,7 @@
 import { Body, Controller, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { CloudinaryService } from "./cloudinary.service";
 import { FileInterceptor } from "@nestjs/platform-express";
+import multer from "multer";
 
 
 
@@ -8,22 +9,27 @@ import { FileInterceptor } from "@nestjs/platform-express";
 export class ImageController {
     constructor(private cloudinaryService: CloudinaryService) { }
     @Post('upload')
-    @UseInterceptors(FileInterceptor('image'))
-    async uploadFile(@UploadedFile() file: Express.Multer.File, @Body('folderName') folderName: string
+    @UseInterceptors(
+        FileInterceptor('image', {
+            storage: multer.memoryStorage(),
+        }),
+    )
+    async uploadFile(
+        @UploadedFile() file: Express.Multer.File,
+        @Body('folderName') folderName: string,
     ) {
-        try {
-            if (!file) {
-                throw new Error('NO FILE RECEIVED');
-            }
+        console.log({
+            hasFile: !!file,
+            bufferExists: !!file?.buffer,
+            bufferLength: file?.buffer?.length,
+        });
 
-            if (!file.buffer || file.buffer.length === 0) {
-                throw new Error('FILE BUFFER EMPTY');
-            }
-            const result = await this.cloudinaryService.uploadImage(file, folderName);
-            return result.url;
-        } catch (error) {
-            console.log('Error Uploading Image', error);
-            throw new Error('Failed to upload image');
+        if (!file || !file.buffer || file.buffer.length === 0) {
+            throw new Error('No file or empty file received');
         }
+
+        const result = await this.cloudinaryService.uploadImage(file, folderName);
+        return result.secure_url;
     }
+
 }
