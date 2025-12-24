@@ -13,5 +13,5 @@ export class UpdatePropertyDto {
   typeOfWorkId?: number;
   statusId?: number;
   customerId?: number;
-  photo1?:string;
+  image1?:string;
 }

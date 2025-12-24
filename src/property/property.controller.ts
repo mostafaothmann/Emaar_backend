@@ -12,8 +12,8 @@ export class PropertyController {
 
   @Post()
   async create(@Body() PropertyDto: PropertyDto) {
-    const imagePath = await this.CloudinaryService.uploadImage(PropertyDto.photo1!, 'properties')
-    PropertyDto.photo1 = imagePath.url;
+    const imagePath = await this.CloudinaryService.uploadImage(PropertyDto.image1!, 'properties')
+    PropertyDto.image1 = imagePath.url;
     return this.propertyService.create(PropertyDto);
   }
 

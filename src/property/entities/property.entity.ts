@@ -49,7 +49,7 @@ export class Property {
   typeOfPropertyId: number;
 
   @Column({ nullable: false, type: 'varchar', length: 255 })
-  photo1: string;
+  image1: string;
 
   @Column({ nullable: true })
   typeOfOwneringId: number;
