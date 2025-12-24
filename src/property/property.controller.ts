@@ -8,8 +8,6 @@ import { CloudinaryService } from 'src/cloudinary.service';
 export class PropertyController {
   constructor(private readonly propertyService: PropertyService,
     private readonly CloudinaryService: CloudinaryService
-
-
   ) { }
 
   @Post()

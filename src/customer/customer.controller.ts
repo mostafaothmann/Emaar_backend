@@ -21,13 +21,13 @@ export class CustomerController {
   constructor(private readonly customerService: CustomerService,
     private readonly PropertyService: PropertyService,
     private readonly CustomerPropertyOfferService: CustomerPropertyOfferService,
-    private readonly CloudinaryService :CloudinaryService
+    private readonly CloudinaryService: CloudinaryService
   ) { }
 
   @Post()
   async create(@Body() createCustomerDto: CustomerDto) {
-    const imagePath = await this.CloudinaryService.uploadImage(createCustomerDto.photo!,'customers')
-    createCustomerDto.photo=imagePath.url;
+    const imagePath = await this.CloudinaryService.uploadImage(createCustomerDto.photo!, 'customers')
+    createCustomerDto.photo = imagePath.url;
     return this.customerService.create(createCustomerDto);
   }
 
@@ -54,12 +54,12 @@ export class CustomerController {
 
   //Related Properties
   @Get(':id/properties')
-  async getPropertiesByCustomer( @Param('id', ParseIntPipe) id: number) {
+  async getPropertiesByCustomer(@Param('id', ParseIntPipe) id: number) {
     return this.PropertyService.findPropertiesByCustomer(+id);
   }
   //Related Offers
   @Get(':id/offers')
-  async getOffersByCustomer(  @Param('id', ParseIntPipe) id: number
+  async getOffersByCustomer(@Param('id', ParseIntPipe) id: number
 
   ) {
     return this.CustomerPropertyOfferService.findOffersByCustomer(+id);
