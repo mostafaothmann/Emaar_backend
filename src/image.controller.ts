@@ -12,7 +12,8 @@ export class ImageController {
     async uploadFile(@UploadedFile() file: Express.Multer.File) {
         try {
             const result = await this.cloudinaryService.uploadImage(file.path);
-            return result;
+            return result.url;
+
         } catch (error) {
             console.log('Error Uploading Image', error);
             throw new Error('Failed to upload image');
