@@ -23,15 +23,19 @@ import { AuthModule } from './auth/auth.module';
 import { CustomerPropertyOfferModule } from './customer-property-offer/customer-property-offer.module';
 import { GovernorateModule } from './governorate/governorate.module';
 import { UnderGovernorateModule } from './under-governorate/under-governorate.module';
+import { MulterModule } from '@nestjs/platform-express'
+import { ImageController } from './image.controller';
+import { CloudinaryService } from './cloudinary.service';
 require("dotenv").config();
-const DBurl=`mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQL_DATABASE}`
+const DBurl = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQL_DATABASE}`
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
- type: 'mysql',
-  url: 'mysql://root:yCcXCuIguQstUJuVXfTysQacslrVnWhu@mysql.railway.internal:3306/railway',
-  autoLoadEntities: true,
-  synchronize: true,
+    MulterModule.register({dest:'./uploads'})
+    , TypeOrmModule.forRoot({
+      type: 'mysql',
+      url: 'mysql://root:yCcXCuIguQstUJuVXfTysQacslrVnWhu@mysql.railway.internal:3306/railway',
+      autoLoadEntities: true,
+      synchronize: true,
     }),
     PStatusModule,
     CompanyModule,
@@ -55,7 +59,7 @@ const DBurl=`mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}
     AuthModule,
     CustomerPropertyOfferModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController,ImageController],
+  providers: [AppService,CloudinaryService],
 })
-export class AppModule {}
+export class AppModule { }
