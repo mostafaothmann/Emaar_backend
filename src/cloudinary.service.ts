@@ -11,14 +11,14 @@ export class CloudinaryService {
         });
     }
     async uploadImage(
-        filePath: string,
+        file: Express.Multer.File,
         folder: string,
     ): Promise<UploadApiResponse | UploadApiErrorResponse> {
         return new Promise((resolve, reject) => {
-            v2.uploader.upload(filePath, { folder: folder }, (error, result) => {
+            v2.uploader.upload_stream({ folder: folder }, (error, result) => {
                 if (error) return reject(error);
                 resolve(result!);
-            });
+            }).end(file.buffer);
         });
     }
 }
