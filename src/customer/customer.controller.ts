@@ -21,13 +21,10 @@ export class CustomerController {
   constructor(private readonly customerService: CustomerService,
     private readonly PropertyService: PropertyService,
     private readonly CustomerPropertyOfferService: CustomerPropertyOfferService,
-    private readonly CloudinaryService: CloudinaryService
   ) { }
 
   @Post()
   async create(@Body() createCustomerDto: CustomerDto) {
-    const imagePath = await this.CloudinaryService.uploadImage(createCustomerDto.photo!, 'customers')
-    createCustomerDto.photo = imagePath.url;
     return this.customerService.create(createCustomerDto);
   }
 

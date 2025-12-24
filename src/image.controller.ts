@@ -12,7 +12,7 @@ export class ImageController {
     async uploadFile(@UploadedFile() file: Express.Multer.File, @Body('folderName') folderName: string
     ) {
         try {
-            const result = await this.cloudinaryService.uploadImage(file.path, folderName);
+            const result = await this.cloudinaryService.uploadImage(file, folderName);
             return result.url;
         } catch (error) {
             console.log('Error Uploading Image', error);

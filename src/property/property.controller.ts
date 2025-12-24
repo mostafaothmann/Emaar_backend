@@ -7,13 +7,10 @@ import { CloudinaryService } from 'src/cloudinary.service';
 @Controller('property')
 export class PropertyController {
   constructor(private readonly propertyService: PropertyService,
-    private readonly CloudinaryService: CloudinaryService
   ) { }
 
   @Post()
   async create(@Body() PropertyDto: PropertyDto) {
-    const imagePath = await this.CloudinaryService.uploadImage(PropertyDto.image1!, 'properties')
-    PropertyDto.image1 = imagePath.url;
     return this.propertyService.create(PropertyDto);
   }
 
