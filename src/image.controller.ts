@@ -12,6 +12,9 @@ export class ImageController {
     async uploadFile(@UploadedFile() file: Express.Multer.File, @Body('folderName') folderName: string
     ) {
         try {
+            if (!file || !file.buffer || file.buffer.length === 0) {
+                throw new Error('No file or empty file received');
+            }
             const result = await this.cloudinaryService.uploadImage(file, folderName);
             return result.url;
         } catch (error) {
