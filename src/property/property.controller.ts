@@ -2,13 +2,20 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PropertyService } from './property.service';
 import { PropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
+import { CloudinaryService } from 'src/cloudinary.service';
 
 @Controller('property')
 export class PropertyController {
-  constructor(private readonly propertyService: PropertyService) {}
+  constructor(private readonly propertyService: PropertyService,
+    private readonly CloudinaryService: CloudinaryService
+
+
+  ) { }
 
   @Post()
-  create(@Body() PropertyDto: PropertyDto) {
+  async create(@Body() PropertyDto: PropertyDto) {
+    const imagePath = await this.CloudinaryService.uploadImage(PropertyDto.photo1!, 'properties')
+    PropertyDto.photo1 = imagePath.url;
     return this.propertyService.create(PropertyDto);
   }
 

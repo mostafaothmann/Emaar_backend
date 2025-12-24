@@ -10,6 +10,7 @@ import { AuthGuard } from 'src/auth/guards/auth.guard';
 import { Roles } from 'src/auth/decorators/roles.decorators';
 import { ROLE } from 'src/auth/enums/role.enum';
 import { RolesGuard } from 'src/auth/guards/roles/roles/roles.guard';
+import { CloudinaryService } from 'src/cloudinary.service';
 
 
 /* @Roles(ROLE.CUSTOMER)
@@ -19,11 +20,14 @@ import { RolesGuard } from 'src/auth/guards/roles/roles/roles.guard';
 export class CustomerController {
   constructor(private readonly customerService: CustomerService,
     private readonly PropertyService: PropertyService,
-    private readonly CustomerPropertyOfferService: CustomerPropertyOfferService
+    private readonly CustomerPropertyOfferService: CustomerPropertyOfferService,
+    private readonly CloudinaryService :CloudinaryService
   ) { }
 
   @Post()
-  create(@Body() createCustomerDto: CustomerDto) {
+  async create(@Body() createCustomerDto: CustomerDto) {
+    const imagePath = await this.CloudinaryService.uploadImage(createCustomerDto.photo!,'customers')
+    createCustomerDto.photo=imagePath.url;
     return this.customerService.create(createCustomerDto);
   }
 

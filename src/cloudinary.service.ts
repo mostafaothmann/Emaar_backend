@@ -12,11 +12,12 @@ export class CloudinaryService {
     }
     async uploadImage(
         filePath: string,
+        folder: string,
     ): Promise<UploadApiResponse | UploadApiErrorResponse> {
         return new Promise((resolve, reject) => {
-            v2.uploader.upload(filePath, { folder: 'images' }, (error, result) => {
+            v2.uploader.upload(filePath, { folder: folder }, (error, result) => {
                 if (error) return reject(error);
-                    resolve(result!);
+                resolve(result!);
             });
         });
     }

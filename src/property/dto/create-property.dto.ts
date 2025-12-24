@@ -13,4 +13,5 @@ export class PropertyDto {
   typeOfWorkId?: number;
   statusId?: number;
   customerId?:number;
+  photo1?:string;
 }

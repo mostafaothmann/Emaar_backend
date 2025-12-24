@@ -48,6 +48,9 @@ export class Property {
   @Column({ nullable: true })
   typeOfPropertyId: number;
 
+  @Column({ nullable: false, type: 'string', length: 255 })
+  photo1: string;
+
   @Column({ nullable: true })
   typeOfOwneringId: number;
 
