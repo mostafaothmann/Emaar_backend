@@ -51,6 +51,19 @@ export class Property {
   @Column({ nullable: false, type: 'varchar', length: 255 })
   image1: string;
 
+  @Column({ nullable: false, type: 'varchar', length: 255 })
+  image2: string;
+
+  @Column({ nullable: false, type: 'varchar', length: 255 })
+  image3: string;
+
+  @Column({ nullable: false, type: 'varchar', length: 255 })
+  image4: string;
+
+  @Column({ nullable: false, type: 'varchar', length: 255 })
+  image5: string;
+
+
   @Column({ nullable: true })
   typeOfOwneringId: number;
 
