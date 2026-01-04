@@ -16,6 +16,11 @@ class UpdatePropertyDto {
     typeOfWorkId;
     statusId;
     customerId;
+    image1;
+    image2;
+    image3;
+    image4;
+    image5;
 }
 exports.UpdatePropertyDto = UpdatePropertyDto;
 //# sourceMappingURL=update-property.dto.js.map

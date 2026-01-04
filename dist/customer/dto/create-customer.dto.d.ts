@@ -4,6 +4,7 @@ export declare class CustomerDto {
     age?: number;
     lastName?: string;
     email?: string;
+    isActive?: number;
     secondPhone?: number;
     photo?: string;
     phone?: string;

@@ -29,6 +29,11 @@ let Property = class Property {
     area;
     isActive;
     typeOfPropertyId;
+    image1;
+    image2;
+    image3;
+    image4;
+    image5;
     typeOfOwneringId;
     typeOfWorkId;
     pstatusId;
@@ -85,6 +90,26 @@ __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)
 ], Property.prototype, "typeOfPropertyId", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: false, type: 'varchar', length: 255 }),
+    __metadata("design:type", String)
+], Property.prototype, "image1", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: false, type: 'varchar', length: 255 }),
+    __metadata("design:type", String)
+], Property.prototype, "image2", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: false, type: 'varchar', length: 255 }),
+    __metadata("design:type", String)
+], Property.prototype, "image3", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: false, type: 'varchar', length: 255 }),
+    __metadata("design:type", String)
+], Property.prototype, "image4", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: false, type: 'varchar', length: 255 }),
+    __metadata("design:type", String)
+], Property.prototype, "image5", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Number)

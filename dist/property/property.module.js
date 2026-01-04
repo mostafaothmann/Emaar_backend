@@ -13,14 +13,16 @@ const property_controller_1 = require("./property.controller");
 const typeorm_1 = require("@nestjs/typeorm");
 const property_entity_1 = require("./entities/property.entity");
 const customer_property_offer_module_1 = require("../customer-property-offer/customer-property-offer.module");
+const image_controller_1 = require("../image.controller");
+const cloudinary_service_1 = require("../cloudinary.service");
 let PropertyModule = class PropertyModule {
 };
 exports.PropertyModule = PropertyModule;
 exports.PropertyModule = PropertyModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([property_entity_1.Property]), customer_property_offer_module_1.CustomerPropertyOfferModule],
-        controllers: [property_controller_1.PropertyController],
-        providers: [property_service_1.PropertyService],
+        controllers: [property_controller_1.PropertyController, image_controller_1.ImageController],
+        providers: [property_service_1.PropertyService, cloudinary_service_1.CloudinaryService],
         exports: [property_service_1.PropertyService]
     })
 ], PropertyModule);

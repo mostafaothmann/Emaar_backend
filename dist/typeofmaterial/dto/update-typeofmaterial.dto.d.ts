@@ -1,4 +1,4 @@
 export declare class UpdateTypeOfMaterialDto {
-    id?: number;
     name?: string;
+    description?: string;
 }

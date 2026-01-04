@@ -5,6 +5,7 @@ export declare class UpdateCustomerDto {
     lastName?: string;
     email?: string;
     secondPhone?: number;
+    isActive?: number;
     photo?: string;
     phone?: string;
     instaLink?: string;

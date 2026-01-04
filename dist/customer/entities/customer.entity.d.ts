@@ -4,6 +4,7 @@ import { Property } from 'src/property/entities/property.entity';
 export declare class Customer {
     id: number;
     firstName: string;
+    isActive: number;
     age: number;
     lastName: string;
     email: string;

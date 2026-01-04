@@ -32,19 +32,21 @@ const auth_module_1 = require("./auth/auth.module");
 const customer_property_offer_module_1 = require("./customer-property-offer/customer-property-offer.module");
 const governorate_module_1 = require("./governorate/governorate.module");
 const under_governorate_module_1 = require("./under-governorate/under-governorate.module");
+const platform_express_1 = require("@nestjs/platform-express");
+const image_controller_1 = require("./image.controller");
+const cloudinary_service_1 = require("./cloudinary.service");
+require("dotenv").config();
+const DBurl = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQL_DATABASE}`;
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            platform_express_1.MulterModule.register({ dest: './uploads' }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'mysql',
-                host: process.env.DB_HOST,
-                port: Number(process.env.DB_PORT),
-                username: process.env.DB_USERNAME,
-                password: process.env.DB_PASSWORD,
-                database: process.env.DB_NAME,
+                url: 'mysql://avnadmin:AVNS_oicw4Pb5xMyDiVgMeer@mysql-4dd0e53-othmanmostafa373-1319.g.aivencloud.com:12466/defaultdb?ssl-mode=REQUIRED',
                 autoLoadEntities: true,
                 synchronize: true,
             }),
@@ -70,8 +72,8 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             customer_property_offer_module_1.CustomerPropertyOfferModule,
         ],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        controllers: [app_controller_1.AppController, image_controller_1.ImageController],
+        providers: [app_service_1.AppService, cloudinary_service_1.CloudinaryService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

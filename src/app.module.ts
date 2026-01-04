@@ -33,7 +33,7 @@ const DBurl = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWOR
     MulterModule.register({dest:'./uploads'})
     , TypeOrmModule.forRoot({
       type: 'mysql',
-      url: 'mysql://root:IbbfGFrsqINxotjfeWfjzJvWjqtuBtXu@caboose.proxy.rlwy.net:50146/railway',
+      url: 'mysql://avnadmin:AVNS_oicw4Pb5xMyDiVgMeer@mysql-4dd0e53-othmanmostafa373-1319.g.aivencloud.com:12466/defaultdb?ssl-mode=REQUIRED',
       autoLoadEntities: true,
       synchronize: true,
     }),

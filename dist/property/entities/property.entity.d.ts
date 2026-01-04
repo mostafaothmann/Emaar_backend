@@ -16,6 +16,11 @@ export declare class Property {
     area: number;
     isActive: number;
     typeOfPropertyId: number;
+    image1: string;
+    image2: string;
+    image3: string;
+    image4: string;
+    image5: string;
     typeOfOwneringId: number;
     typeOfWorkId: number;
     pstatusId: number;

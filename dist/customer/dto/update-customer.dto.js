@@ -7,6 +7,7 @@ class UpdateCustomerDto {
     lastName;
     email;
     secondPhone;
+    isActive;
     photo;
     phone;
     instaLink;

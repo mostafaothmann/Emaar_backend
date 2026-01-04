@@ -16,6 +16,11 @@ class PropertyDto {
     typeOfWorkId;
     statusId;
     customerId;
+    image1;
+    image2;
+    image3;
+    image4;
+    image5;
 }
 exports.PropertyDto = PropertyDto;
 //# sourceMappingURL=create-property.dto.js.map

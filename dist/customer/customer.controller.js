@@ -28,7 +28,7 @@ let CustomerController = class CustomerController {
         this.PropertyService = PropertyService;
         this.CustomerPropertyOfferService = CustomerPropertyOfferService;
     }
-    create(createCustomerDto) {
+    async create(createCustomerDto) {
         return this.customerService.create(createCustomerDto);
     }
     findAll() {
@@ -56,7 +56,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_customer_dto_1.CustomerDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], CustomerController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),

@@ -22,7 +22,7 @@ let PropertyController = class PropertyController {
     constructor(propertyService) {
         this.propertyService = propertyService;
     }
-    create(PropertyDto) {
+    async create(PropertyDto) {
         return this.propertyService.create(PropertyDto);
     }
     findAll() {
@@ -47,7 +47,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_property_dto_1.PropertyDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], PropertyController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),

@@ -15,6 +15,7 @@ const typeorm_1 = require("typeorm");
 let TypeOfMaterial = class TypeOfMaterial {
     id;
     name;
+    description;
     materials;
 };
 exports.TypeOfMaterial = TypeOfMaterial;
@@ -26,6 +27,10 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', length: 255, unique: true, nullable: true }),
     __metadata("design:type", String)
 ], TypeOfMaterial.prototype, "name", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'varchar', length: 255, unique: false, nullable: true }),
+    __metadata("design:type", String)
+], TypeOfMaterial.prototype, "description", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => material_entity_1.Material, material => material.typeOfMaterial),
     __metadata("design:type", Array)
