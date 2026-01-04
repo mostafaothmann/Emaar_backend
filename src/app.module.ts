@@ -33,7 +33,7 @@ const DBurl = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWOR
     MulterModule.register({dest:'./uploads'})
     , TypeOrmModule.forRoot({
       type: 'mysql',
-      url: 'mysql://root:yCcXCuIguQstUJuVXfTysQacslrVnWhu@mysql.railway.internal:3306/railway',
+      url: 'mysql://root:IbbfGFrsqINxotjfeWfjzJvWjqtuBtXu@caboose.proxy.rlwy.net:50146/railway',
       autoLoadEntities: true,
       synchronize: true,
     }),
