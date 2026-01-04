@@ -27,39 +27,20 @@ import { MulterModule } from '@nestjs/platform-express'
 import { ImageController } from './image.controller';
 import { CloudinaryService } from './cloudinary.service';
 require("dotenv").config();
-const DBurl = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_ROOT_PASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQL_DATABASE}`
+const DBurl = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_PASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQL_DATABASE}?ssl-mode=REQUIRED`;
+
 @Module({
   imports: [
-    MulterModule.register({dest:'./uploads'})
-    , TypeOrmModule.forRoot({
+    MulterModule.register({ dest: './uploads' }),
+    TypeOrmModule.forRoot({
       type: 'mysql',
-      url: 'mysql://avnadmin:AVNS_oicw4Pb5xMyDiVgMeer@mysql-4dd0e53-othmanmostafa373-1319.g.aivencloud.com:12466/defaultdb?ssl-mode=REQUIRED',
+      url: DBurl,   // Use the env variable version
       autoLoadEntities: true,
       synchronize: true,
     }),
-    PStatusModule,
-    CompanyModule,
-    TypeOfCompanyModule,
-    TypeofpropertyModule,
-    TypeofworkModule,
-    TypeofOwneringModule,
-    VideoofpropertyModule,
-    PhotoofpropertyModule,
-    TypeofworkerModule,
-    WorkerModule,
-    CustomerModule,
-    CustomerCompanyModule,
-    PropertyModule,
-    MaterialModule,
-    TypeofmaterialModule,
-    GovernorateModule,
-    UnderGovernorateModule,
-    WorkerCompanyModule,
-    CompanyPropertyOfferModule,
-    AuthModule,
-    CustomerPropertyOfferModule,
+    // ...other modules
   ],
-  controllers: [AppController,ImageController],
-  providers: [AppService,CloudinaryService],
+  controllers: [AppController, ImageController],
+  providers: [AppService, CloudinaryService],
 })
-export class AppModule { }
+export class AppModule {}
