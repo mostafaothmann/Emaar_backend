@@ -12,7 +12,7 @@ async function bootstrap() {
   });
 
   // ✅ Replit / Cloud platforms use dynamic ports
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 3001;
 
   // ✅ IMPORTANT: bind to all interfaces
   await app.listen(port, '0.0.0.0');

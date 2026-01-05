@@ -26,6 +26,7 @@ import { UnderGovernorateModule } from './under-governorate/under-governorate.mo
 import { MulterModule } from '@nestjs/platform-express'
 import { ImageController } from './image.controller';
 import { CloudinaryService } from './cloudinary.service';
+import { VideoOfProperty } from './videoofproperty/entities/videoofproperty.entity';
 require("dotenv").config();
 const DBurl = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_PASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQL_DATABASE}?ssl-mode=REQUIRED`;
 
@@ -34,11 +35,14 @@ const DBurl = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQL_PASSWORD}@${
     MulterModule.register({ dest: './uploads' }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      url: DBurl,   // Use the env variable version
+      url: DBurl,   
       autoLoadEntities: true,
       synchronize: true,
     }),
-    // ...other modules
+   UnderGovernorateModule,GovernorateModule,
+   AuthModule,CustomerCompanyModule,CustomerModule,VideoOfProperty,CompanyModule,TypeOfCompanyModule,TypeofOwneringModule,TypeofmaterialModule,TypeofpropertyModule,TypeofworkModule,TypeofworkerModule
+  ,PStatusModule,PhotoofpropertyModule,CustomerPropertyOfferModule,PropertyModule,PropertyModule,WorkerModule,
+  CompanyPropertyOfferModule,WorkerCompanyModule,VideoofpropertyModule,MaterialModule
   ],
   controllers: [AppController, ImageController],
   providers: [AppService, CloudinaryService],
