@@ -1,33 +1,23 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ExpressAdapter } from '@nestjs/platform-express';
-import serverless from 'serverless-http';
-import express from 'express';
 
-const expressApp = express();
-let cachedServer: any;
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
 
-async function bootstrapServer() {
-  if (!cachedServer) {
-    const app = await NestFactory.create(
-      AppModule,
-      new ExpressAdapter(expressApp),
-      { bufferLogs: true }
-    );
+  // ✅ Enable CORS (open for frontend access)
+  app.enableCors({
+    origin: '*', // later replace with your frontend domain
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  });
 
-    app.enableCors({
-      origin: '*',
-    });
+  // ✅ Replit / Cloud platforms use dynamic ports
+  const port = process.env.PORT || 3000;
 
-    await app.init();
-    cachedServer = serverless(expressApp);
-  }
+  // ✅ IMPORTANT: bind to all interfaces
+  await app.listen(port, '0.0.0.0');
 
-  return cachedServer;
+  console.log(`🚀 Backend running on port ${port}`);
 }
 
-// 👇 THIS EXPORT IS MANDATORY
-export const handler = async (event: any, context: any) => {
-  const server = await bootstrapServer();
-  return server(event, context);
-};
+bootstrap();
