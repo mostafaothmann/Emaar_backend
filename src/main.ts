@@ -5,16 +5,29 @@ import serverless from 'serverless-http';
 import express from 'express';
 
 const expressApp = express();
+let cachedServer: any;
 
-async function bootstrap() {
-  const app = await NestFactory.create(
-    AppModule,
-    new ExpressAdapter(expressApp),
-  );
-  app.enableCors();
-  await app.init();
+async function bootstrapServer() {
+  if (!cachedServer) {
+    const app = await NestFactory.create(
+      AppModule,
+      new ExpressAdapter(expressApp),
+      { bufferLogs: true }
+    );
+
+    app.enableCors({
+      origin: '*',
+    });
+
+    await app.init();
+    cachedServer = serverless(expressApp);
+  }
+
+  return cachedServer;
 }
 
-bootstrap();
-
-export const handler = serverless(expressApp);
+// 👇 THIS EXPORT IS MANDATORY
+export const handler = async (event: any, context: any) => {
+  const server = await bootstrapServer();
+  return server(event, context);
+};
